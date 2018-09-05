@@ -34,7 +34,7 @@ public class DaftarAntrianDialog extends JDialog{
         
         namaText = new JTextField();
         namaText.getText();
-        namaText.setBounds(105,40,150,30);
+        namaText.setBounds(105,40,175,30);
         this.add(namaText);
         
         
@@ -45,7 +45,7 @@ public class DaftarAntrianDialog extends JDialog{
         
         normText = new JTextField();
         normText.getText();
-        normText.setBounds(105,80,150,30);
+        normText.setBounds(105,80,175,30);
         this.add(normText);
         
         
@@ -56,7 +56,7 @@ public class DaftarAntrianDialog extends JDialog{
         
         alamatText = new JTextField();
         alamatText.getText();
-        alamatText.setBounds(105,120,150,30);
+        alamatText.setBounds(105,120,175,30);
         this.add(alamatText);
         
         
