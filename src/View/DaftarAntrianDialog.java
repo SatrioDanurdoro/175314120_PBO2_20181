@@ -15,8 +15,8 @@ import javax.swing.JTextField;
  * @author Satrio
  */
 public class DaftarAntrianDialog extends JDialog{
-    private static JLabel judulLabel, namaLabel;
-    private static JTextField namaText;
+    private static JLabel judulLabel, namaLabel,normLabel,alamatLabel;
+    private static JTextField namaText,normText,alamatText;
     private static JButton saveButton;
     
     public void init(){
@@ -26,14 +26,45 @@ public class DaftarAntrianDialog extends JDialog{
         judulLabel.setBounds(100,-30,100,90);
         this.add(judulLabel);
         
-        namaLabel = new JLabel("NAMA");
-        namaLabel.setBounds(10,10,100,90);
+        
+        
+        namaLabel = new JLabel("Nama");
+        namaLabel.setBounds(5,10,100,90);
         this.add(namaLabel);
         
         namaText = new JTextField();
         namaText.getText();
-        namaText.setBounds(100,40,150,30);
+        namaText.setBounds(105,40,150,30);
         this.add(namaText);
+        
+        
+        
+        normLabel = new JLabel("No Rekam Medis");
+        normLabel.setBounds (5,50,100,90);
+        this.add(normLabel);
+        
+        normText = new JTextField();
+        normText.getText();
+        normText.setBounds(105,80,150,30);
+        this.add(normText);
+        
+        
+        
+        alamatLabel = new JLabel("Alamat");
+        alamatLabel.setBounds (5,90,100,90);
+        this.add(alamatLabel);
+        
+        alamatText = new JTextField();
+        alamatText.getText();
+        alamatText.setBounds(105,120,150,30);
+        this.add(alamatText);
+        
+        
+        
+        saveButton = new JButton("SIMPAN");
+        saveButton.setBounds (100,180,100,30);
+        this.add(saveButton);
+        
     }
     
     public DaftarAntrianDialog(String title) {
