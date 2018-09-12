@@ -5,19 +5,30 @@
  */
 package Model;
 
+import static Model.Pasien.daftarPasienKlinik;
+import java.util.ArrayList;
+
 /**
  *
  * @author Satrio
  */
 public class Pasien {
+
     private String noRekamMedis, nama, alamat, tempatLahir; //Pendeklarasian variabel bertipe data String
     private int tanggalLahir, bulanLahir, tahunLahir; //Pendeklarasian variabel bertipe data integer
+    public static ArrayList <Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
     
-    public Pasien(){  //menambahkan konstruktor, Konsktruktor adalah method yang memiliki nama yang sama dengan nama kelas
-        
+    public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String noRekamMedis) {//menambahkan konstruktor, Konsktruktor adalah method yang memiliki nama yang sama dengan nama kelas
+        this.noRekamMedis = noRekamMedis;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.tempatLahir = tempatLahir;
+        this.tanggalLahir = tanggalLahir;
+        this.bulanLahir = bulanLahir;
+        this.tahunLahir = tahunLahir;
     }
     
-
+    
     public String getNoRekamMedis() { //membuat method bernama getNoRekamedis yang akan mereturn variabel noRekamMedis yang bertipe data String
         return noRekamMedis;
     }
@@ -89,4 +100,25 @@ public class Pasien {
             throw new Exception(" Tahun Lahir Anda Tidak Valid "); //berfungsi untuk memberitahu kesalahan user dalam menginputkan tahunLahir.
         }
     }
+    
+    
+    public static void tambahPasienBaru(Pasien pasien) {
+        daftarPasienKlinik.add(pasien);
+    }
+    
+    public static Pasien cariPasien(String string) {
+        for (int i = 0; i < daftarPasienKlinik.size();i++) {
+            if (daftarPasienKlinik.get(i).noRekamMedis== string) {
+                return daftarPasienKlinik.get(i);
+            }
+            
+        }
+        return null;
+        
+    }
+
+    
+
+
+
 }
