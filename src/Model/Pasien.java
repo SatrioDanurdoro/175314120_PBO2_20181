@@ -27,6 +27,10 @@ public class Pasien {
         this.bulanLahir = bulanLahir;
         this.tahunLahir = tahunLahir;
     }
+
+    public Pasien() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     public String getNoRekamMedis() { //membuat method bernama getNoRekamedis yang akan mereturn variabel noRekamMedis yang bertipe data String
@@ -117,8 +121,13 @@ public class Pasien {
         
     }
 
+    public void setNik(String text) throws Exception{
+     
+        if (text.length()== 6) {
+            this.noRekamMedis=text;
+        }else{
     
-
-
-
+            throw new Exception("NIK harus terdiri dari 6 digit");
+        }
+    }
 }
