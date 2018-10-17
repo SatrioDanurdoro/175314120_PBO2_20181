@@ -6,7 +6,13 @@
 package Model;
 
 import static Model.Pasien.daftarPasienKlinik;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -16,8 +22,8 @@ public class Pasien {
 
     private String noRekamMedis, nama, alamat, tempatLahir; //Pendeklarasian variabel bertipe data String
     private int tanggalLahir, bulanLahir, tahunLahir; //Pendeklarasian variabel bertipe data integer
-    public static ArrayList <Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
-    
+    public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
+
     public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String noRekamMedis) {//menambahkan konstruktor, Konsktruktor adalah method yang memiliki nama yang sama dengan nama kelas
         this.noRekamMedis = noRekamMedis;
         this.nama = nama;
@@ -29,20 +35,19 @@ public class Pasien {
     }
 
     public Pasien() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
-    
-    
+
     public String getNoRekamMedis() { //membuat method bernama getNoRekamedis yang akan mereturn variabel noRekamMedis yang bertipe data String
         return noRekamMedis;
     }
 
     public void setNoRekamMedis(String noRekamMedis) throws NumberFormatException { //membuat method void dengan menambahkan fungsi throws NumberFormatException
-        if (noRekamMedis.toCharArray().length>=6) { //Method ini menyeleksi array baru, yang panjangnya harus sesuai dengan yang ditentukan sebelumnya
+        if (noRekamMedis.toCharArray().length >= 6) { //Method ini menyeleksi array baru, yang panjangnya harus sesuai dengan yang ditentukan sebelumnya
             this.noRekamMedis = noRekamMedis;
-        }else{
-                throw new NumberFormatException("Nomor Rekam Medis Salah"); //NumberFormatException berfungsi untuk memberitahu kesalahan user dalam format penulisan angka.
-                }
+        } else {
+            throw new NumberFormatException("Nomor Rekam Medis Salah"); //NumberFormatException berfungsi untuk memberitahu kesalahan user dalam format penulisan angka.
+        }
     }
 
     public String getNama() { //membuat method baru yang akan mereturn variabel bertipe data String
@@ -104,30 +109,56 @@ public class Pasien {
             throw new Exception(" Tahun Lahir Anda Tidak Valid "); //berfungsi untuk memberitahu kesalahan user dalam menginputkan tahunLahir.
         }
     }
-    
-    
+
     public static void tambahPasienBaru(Pasien pasien) {
         daftarPasienKlinik.add(pasien);
     }
-    
+
     public static Pasien cariPasien(String string) {
-        for (int i = 0; i < daftarPasienKlinik.size();i++) {
-            if (daftarPasienKlinik.get(i).noRekamMedis== string) {
+        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+            if (daftarPasienKlinik.get(i).noRekamMedis == string) {
                 return daftarPasienKlinik.get(i);
             }
-            
+
         }
         return null;
-        
+
     }
 
-    public void setNik(String text) throws Exception{
-     
-        if (text.length()== 6) {
-            this.noRekamMedis=text;
-        }else{
-    
+    public void setNik(String text) throws Exception {
+
+        if (text.length() == 6) {
+            this.noRekamMedis = text;
+        } else {
+
             throw new Exception("NIK harus terdiri dari 6 digit");
         }
+    }
+
+    @Override
+    public String toString() {
+        return (nama + "\t" + alamat + "\n");
+    }
+
+    public static void simpanDaftarPasien(File file) throws IOException {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+                String data = daftarPasienKlinik.get(i).toString();
+                fos.write(data.getBytes());
+            }
+        }catch (FileNotFoundException ex) {
+//            Logger.getLogger(Pasie.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+//            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+         finally {
+
+        }
+    }
+
+    public static void bacaDaftarPasien(File file) {
+
     }
 }
